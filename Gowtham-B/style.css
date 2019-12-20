@@ -1,0 +1,27 @@
+.homepage-hero-banner{
+        font-family: CeraPRO;
+        color: #3a4649;
+        position: relative;
+        padding-top: 1rem;
+        padding-bottom: 19rem;
+        background-color: #eff6f4;
+}
+.homepage-hero-banner__container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    box-sizing: border-box;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1024px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+.homepage-hero-banner__headline {
+    font-size: 2.25rem;
+    font-weight: 700;
+    line-height: 1.33;
+    color: #8155fb;
+    margin-bottom: 1.5rem;
+}
+
