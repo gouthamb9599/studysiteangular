@@ -1,0 +1,64 @@
+<div *ngIf="hello; then thencall; else elsecall"></div>
+<ng-template #thencall>
+    <div class="adminsearch">
+        <div [ngSwitch]="number">
+            <div *ngSwitchCase="1">
+                <div *ngIf="student" class="searchset">
+                    <div class="addbtn">
+                        <button mat-raised-button color="primary" (click)="openDialog()">
+            Add Student
+          </button>
+                    </div>
+                    <div class="searchinput">
+                        <mat-form-field class="inputstyle"><input matInput type="text" name="search1" (input)="onChange($event)" class="textsearch" placeholder="Enter Student Name" /></mat-form-field><span></span>
+                        <mat-form-field class="inputstyle"><input matInput type="email" name="search2" class="textsearch" (input)="onChange($event)" placeholder="Enter Student Email" /></mat-form-field>
+                        <button mat-raised-button color="primary" (click)="findset($event)">
+          Search
+        </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="2">
+                <div *ngIf="teacher" class="searchset">
+                    <div class="addbtn">
+                        <button mat-raised-button color="primary" (click)="openDialog()">
+            Add Teacher
+          </button>
+                    </div>
+                    <div class="searchinput">
+                        <mat-form-field class="inputstyle"><input matInput type="text" name="search1" class="textsearch" (input)="onChange($event)" placeholder="Enter Teacher Name" /></mat-form-field>
+                        <mat-form-field class="inputstyle">
+                            <input matInput type="email" name="search2" (input)="onChange($event)" class="textsearch" placeholder="Enter Teacher Email" /></mat-form-field>
+                        <button mat-raised-button color="primary" (click)="findset($event)">
+          Search
+        </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="3">
+                <div *ngIf="course" class="searchset">
+                    <div class="addbtn">
+                        <button mat-raised-button color="primary" (click)="openDialog()">
+            Add Course
+          </button>
+                    </div>
+                    <div class="searchinput">
+                        <mat-form-field class="inputstyle"><input matInput type="text" name="search1" (input)="onChange($event)" class="textsearch" placeholder="Enter Course Name" /></mat-form-field>
+                        <mat-form-field class="inputstyle"><input matInput type="email" name="search2" (input)="onChange($event)" class="textsearch" placeholder="Enter Department" /></mat-form-field>
+                        <button mat-raised-button color="primary" (click)="findset($event)">
+          Search
+        </button>
+                    </div>
+                </div>
+            </div>
+            <div *ngSwitchCase="0"></div>
+        </div>
+        <!-- <div class="modal" id="modal">
+      <div class="modal-content">
+        <span  id="spans" class="close">&times;</span>
+        <p>Some text in the Modal..</p>
+      </div>
+    </div> -->
+    </div>
+</ng-template>
+<ng-template #elsecall> </ng-template>

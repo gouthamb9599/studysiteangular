@@ -1,0 +1,24 @@
+<div>
+    <div mat-dialog-content>
+        <h1 mat-dialog-title>Adding {{data.name}}</h1>
+        <div>
+            <input *ngIf="data && data.type===1" matInput type="text" name="name">
+            <input *ngIf="data && data.type===1" matInput type="email" name="email">
+            <input *ngIf="data && data.type===1" matInput type="password" name="password">
+        </div>
+        <div>
+            <input matInput *ngIf="data && data.type===2" type="text" value="name">
+            <input matInput *ngIf="data && data.type===2" type="email" value="email">
+            <input matInput *ngIf="data && data.type===2" type="text" value="dept">
+            <input matInput *ngIf="data && data.type===2" type="password" value="password">
+        </div>
+        <div>
+            <input *ngIf="data && data.type===3" matInput type="text" value="name">
+            <input *ngIf="data && data.type===3" matInput type="text" value="dept">
+        </div>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button (click)="onNoClick()">Cancel</button>
+        <button mat-button cdkFocusInitial>Add</button>
+    </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="content">
+  <div class="sidebar" *ngIf="value" [ngSwitch]="user">
+    <div *ngSwitchCase="2">
+      <button class="sideview" (click)="studentdetails($event)">
+        Student Details
+      </button>
+      <button class="sideview" (click)="studentmarks($event)">
+        Student Marks
+      </button>
+      <button class="sideview" (click)="oncurrentstatus($event)">
+        Current status
+      </button>
+    </div>
+    <div *ngSwitchCase="1">
+      <button class="sideview" (click)="coursedetails($event)">
+        Course Details
+      </button>
+      <button class="sideview" (click)="viewmarks($event)">Marks</button>
+    </div>
+    <div *ngSwitchCase="3">
+      <button class="sideview" (click)="adminview($event, 1)">
+        <img class="set" [src]="teacher" /><span
+          >Teachers</span
+        ></button
+      ><br />
+      <button class="sideview" (click)="adminview($event, 2)">
+        <img class="set" [src]="stu" /><span
+          >Students</span
+        ></button
+      ><br />
+      <button class="sideview" (click)="adminview($event, 3)">
+        <img class="set"  [src]="course" /><span>Courses</span>
+      </button>
+    </div>
+    <div *ngSwitchCase="4">
+      <h2>
+        sidebar is unaccessible unless you login with your account / Create a
+        new account
+      </h2>
+    </div>
+  </div>
+  <div class="displayset">
+    <div class="studentdetails" [ngSwitch]="role" *ngIf="opendis1">
+      <table *ngSwitchCase="2">
+        <thead>
+          <tr>
+            <th>Student ID</th>
+            <th>Student Name</th>
+          </tr>
+        </thead>
+        <tbody *ngSwitchCase="2">
+          <tr *ngFor="let element of studentdetail">
+            <td>{{ element.userid }}</td>
+            <td>{{ element.name }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <table *ngSwitchCase="1">
+        <thead>
+          <tr>
+            <th>Course ID</th>
+            <th>Course Name</th>
+            <th>Department</th>
+          </tr>
+        </thead>
+
+        <tbody *ngSwitchCase="1">
+          <tr *ngFor="let element of studentdetail">
+            <td>{{ element.courseid }}</td>
+            <td>{{ element.coursename }}</td>
+            <td>{{ element.courseheader }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="marks" [ngSwitch]="role" *ngIf="opendis2">
+      <table *ngSwitchCase="2">
+        <thead>
+          <tr>
+            <th>Student Name</th>
+            <th>Subject (ID)</th>
+            <th>Marks</th>
+            <th>Edit/Undo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of studentmark; let index = index">
+            <td>{{ element.name }}</td>
+            <td>{{ element.subject }}</td>
+            <td>
+              <div
+                *ngIf="editarray.includes(index); then markThen; else markElse"
+              ></div>
+              <ng-template #markThen>
+                <input
+                  type="number"
+                  min="0"
+                  max="100"
+                  name="mark"
+                  [value]="mark[index]"
+                  (change)="binddata($event, index)"
+                />
+              </ng-template>
+              <ng-template #markElse>
+                {{ mark[index] }}
+              </ng-template>
+            </td>
+            <td>
+              <div
+                *ngIf="
+                  editarray.includes(index);
+                  then buttonElse;
+                  else buttonThen
+                "
+              ></div>
+              <ng-template #buttonThen>
+                <button class="button_edit" (click)="editmark($event, index)">
+                  <img class="set" [src]="edit" />
+                </button>
+                <button
+                  class="button_edit"
+                  (click)="revokechange($event, index)"
+                >
+                  <img class="set" [src]="undo" />
+                </button>
+              </ng-template>
+              <ng-template #buttonElse>
+                <button class="button_edit" (click)="changemark($event, index)">
+                  <img class="set" ng-click="changemark($event, index)"[src]=changes /></button
+                ><button class="button_edit" (click)="undoedit($event, index)">
+                  <img class="set" [src]="reset" />
+                </button>
+              </ng-template>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <table *ngSwitchCase="1">
+        <thead>
+          <th>Subject</th>
+          <th>Marks</th>
+          <th>Teacher (ID)</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let element of studentmark">
+            <td>{{ element.subject }}</td>
+            <td>{{ element.marks }}</td>
+            <td>{{ element.teacherid }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div *ngIf="openchart" class="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [title]="chartOptions.title"
+    ></apx-chart>
+  </div>
+  <app-adminview [value]="val"></app-adminview>
+</div>

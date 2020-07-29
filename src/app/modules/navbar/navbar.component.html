@@ -1,0 +1,66 @@
+<div class="navbar">
+  <button class="button_nav" (click)="navFunction($event)">
+    <i class="fa fa-list" aria-hidden="true"></i>
+  </button>
+  <button class="button_course" (click)="display($event)">
+    <span>Courses</span>
+  </button>
+
+  <div class="search">
+    <img alt="search" class="imgs"  [src]=imageSearch/>
+    <input
+      type="text"
+      class="searchTerm"
+      value="this.search"
+      placeholder="Search..."
+      autoComplete="off"
+      [(ngModel)]="search"
+    />
+    <div (click)="searchterm($event)" class="searchButton">
+      <img
+        alt="div"
+        class="right"
+        [src]=imgRight
+      />
+    </div>
+  </div>
+
+  <img alt="logo" class="logo" [src]="imageSrc" />
+  <div [ngSwitch]="choice">
+    <div class="logs" *ngSwitchCase="0">
+      <p class="buttonset">{{ name }}</p>
+      <button (click)="Logout($event)" type="button" class="buttonset">
+        Logout
+      </button>
+    </div>
+    <div class="logs" *ngSwitchCase="1">
+      <p class="buttonset">Welcome Admin</p>
+      <button (click)="Logout($event)" type="button" class="buttonset">
+        Logout
+      </button>
+    </div>
+    <div class="logs" *ngSwitchCase="2">
+      <button type="button" class="buttonset" [routerLink]="['/login']">
+        Login
+        <!-- <a class="url" href="http://localhost:4200/login">Login</a> -->
+      </button>
+      <button type="button" class="buttonset" [routerLink]="['/signup']">
+        Signup
+        <!-- <a class="url" href="http://localhost:4200/signup">Signup</a> -->
+      </button>
+    </div>
+  </div>
+</div>
+<div *ngIf="hello" class="courses">
+  <div class="displaylist" *ngFor="let elements of Courses; let index = index">
+    <h2>{{ elements }}</h2>
+    <ul class="list" *ngFor="let element of Subject[index].list">
+      <li>{{ element.name }}</li>
+    </ul>
+  </div>
+</div>
+<div class="displaysearch" *ngIf="ifsearch">
+  <div *ngFor="let elements of arraysearched">
+    <p class="itemin">{{ elements.coursename }}</p>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+}
+
+.form img {
+  width: 100%;
+}
+
+.links {
+  text-decoration: none;
+  color: white;
+}
+
+.signup {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-radio-button ~ .mat-radio-button {
+  margin-left: 16px;
+  margin-bottom: 16px;
+}
+.lfooter {
+  margin: 1rem;
+}
